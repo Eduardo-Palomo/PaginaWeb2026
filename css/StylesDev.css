@@ -394,3 +394,62 @@ body.dev-mode .floating-toggle-btn .icon-brush {
         background: linear-gradient(#00000080, var(--design-gradient-color)), url('../Media/Images/RenderPT.png');
     
 }
+
+.ContactSection {
+    padding: 80px 10%;
+    background: linear-gradient(to bottom, #14141480, var(--design-gradient-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Asegura que la sección tenga una altura mínima */
+}
+
+.ContactForm{
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre elementos del formulario */
+    max-width: 500px;
+    width: 100%; /* Asegura que ocupe el ancho disponible hasta max-width */
+    margin: 0 auto;
+    background-color: var(--bg-FormContact);
+    font-family: oswald, sans-serif;
+    color: #ffffff; /* Texto blanco para contraste con el fondo oscuro */
+    border-radius: 15px;
+    padding: 40px; /* Relleno interno del formulario */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para darle profundidad */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+}
+
+.ContactLabel{
+    display: block; /* Asegura que cada label esté en su propia línea */
+    text-align: left;
+    font-size: 1.1rem;
+    font-family: oswald, sans-serif;
+    margin-bottom: 5px; /* Espacio debajo del label */
+    color: #e0e0e0; /* Color de texto más claro para labels */
+}
+
+.ContactInput,
+.ContactTextArea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #444; /* Borde oscuro */
+    background-color: #333; /* Fondo oscuro para los campos */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ContactInput:focus,
+.ContactTextArea:focus {
+    outline: none;
+    border-color: var(--bg-ColorNabvarhover); /* Resalta el borde al enfocar */
+    box-shadow: 0 0 0 3px rgba(142, 27, 27, 0.3); /* Sombra de enfoque */
+}
+
+.ContactTextArea{
+    min-height: 120px; /* Altura mínima para el área de texto */
+    resize: vertical;
+}

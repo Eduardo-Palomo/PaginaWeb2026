@@ -8,7 +8,7 @@
     --bg-ColorNabvar: #6d0f0f80;
     --bg-ColorNabvarhover: #8e1b1b80;   
     --bg-ColorFloatingBtn: #6d0f0f; /* Usando una versión sólida de tu color de acento */
-    --bg-FormContact: #dfdfdfee;
+    --bg-FormContact: #222222; /* Un gris oscuro para el formulario */
     
 
 }
@@ -369,8 +369,8 @@ body.dev-mode .floating-toggle-btn .icon-brush {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    user-select: none;
     -webkit-user-drag: none;
+     
 }
 
 .skills-list li {
@@ -382,6 +382,8 @@ body.dev-mode .floating-toggle-btn .icon-brush {
     font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
     cursor: default;
+    -webkit-user-drag: none;
+     
 }
 
 .skills-list li:hover {
@@ -397,39 +399,79 @@ body.dev-mode .floating-toggle-btn .icon-brush {
 
 }
 
+.ContactSection {
+    padding: 80px 10%;
+    background: linear-gradient(to bottom, #14141480, var(--design-gradient-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Asegura que la sección tenga una altura mínima */
+}
+
 .ContactForm{
-
-
-display: flex;
+    display: flex;
     flex-direction: column;
-    gap: 2px;
-    max-width: 400px;
+    gap: 15px; /* Espacio entre elementos del formulario */
+    max-width: 500px;
+    width: 100%; /* Asegura que ocupe el ancho disponible hasta max-width */
     margin: 0 auto;
     background-color: var(--bg-FormContact);
     font-family: oswald, sans-serif;
-    color: #121212;
-    border-radius: 4%;
-
+    color: #ffffff; /* Texto blanco para contraste con el fondo oscuro */
+    border-radius: 15px;
+    padding: 40px; /* Relleno interno del formulario */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para darle profundidad */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
 }
 
 .ContactLabel{
-
+    display: block; /* Asegura que cada label esté en su propia línea */
     text-align: left;
     font-size: 1.1rem;
     font-family: oswald, sans-serif;
-    margin: 5px;
-    resize: horizontal;
-    width: 30px;
+    margin-bottom: 5px; /* Espacio debajo del label */
+    color: #e0e0e0; /* Color de texto más claro para labels */
+}
 
+.ContactInput,
+.ContactTextArea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #444; /* Borde oscuro */
+    background-color: #333; /* Fondo oscuro para los campos */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    
+}
+
+.ContactInput:focus,
+.ContactTextArea:focus {
+    outline: none;
+    border-color: var(--bg-ColorNabvarhover); /* Resalta el borde al enfocar */
+    box-shadow: 0 0 0 3px rgba(142, 27, 27, 0.3); /* Sombra de enfoque */
 }
 
 .ContactTextArea{
-
-    padding: 40px;
-    border-radius: 10px;
-    border: none;
+    min-height: 120px; /* Altura mínima para el área de texto */
     resize: vertical;
-    font-family: oswald, sans-serif;
-    font-size: 1rem;
-    
+}
+
+.ContactSubmitBtn {
+    background-color: var(--bg-ColorFloatingBtn);
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: 'Oswald', sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ContactSubmitBtn:hover {
+    background-color: var(--bg-ColorNabvarhover);
+    transform: translateY(-2px);
 }
