@@ -1,0 +1,105 @@
+/* Añ
+adimos un fondo oscuro al body para que el cristal y el brillo destaquen */
+
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --text-muted: #9ca3af;
+    --accent-color: #0078d4;
+    --accent-hover: #005fa3;
+    --border-color: #333;
+}
+
+
+body {
+    background-color: #121212;
+    margin: 0;
+}
+
+/* Contenedor principal para centrar la botella */
+.bottle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    filter: drop-shadow(0 0 15px rgba(0, 120, 212, 0.4));
+    size: 40%;
+}
+
+/* La Tapa: Un bloque pequeño con bordes redondeados */
+.tapa {
+    width: 40px;
+    height: 20px;
+    background: #005fa3; /* Azul oscuro */
+    border-radius: 4px 4px 0 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+/* El Envase: Usamos bordes redondeados para darle forma de hombros y base */
+.envase {
+    width: 80px;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.1); /* Cristal traslúcido */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px 15px 20px 20px; /* Hombros arriba, base abajo */
+    position: relative;
+    overflow: hidden; /* Para que el líquido no se salga de los bordes */
+    margin-top: -2px; /* Une la tapa con el envase */
+}
+
+/* El Líquido: Un bloque interno con color azul brillante */
+.liquido {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70%; /* Nivel del agua */
+    background: linear-gradient(to top, #0078d4, #58a6ff);
+    opacity: 0.8;
+
+}
+
+/* Animación simple de "balanceo" para el líquido */
+
+
+/* Brillo del cristal */
+.envase::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 10px;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+.floating-return-btn{
+     position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 120, 212, 0.5);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.floating-return-btn:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 120, 212, 0.7);
+}
