@@ -34,6 +34,27 @@ slider.addEventListener('mouseleave', () => {
     isDown = false;
 });
 
+// 5. Soporte para pantallas táctiles (Celulares y Tablets)
+if (slider) {
+    slider.addEventListener('touchstart', (e) => {
+        isDown = true;
+        // En pantallas táctiles, las posiciones vienen dentro del arreglo 'touches'
+        startX = e.touches[0].pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+        isDown = false;
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Multiplicador de velocidad
+        slider.scrollLeft = scrollLeft - walk;
+    }, { passive: true });
+}
+
 window.addEventListener('scroll', () => {
     const video = document.getElementById('hero-video');
     const scrollPos = window.scrollY; // Obtiene cuánto ha bajado el usuario
