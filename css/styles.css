@@ -421,6 +421,7 @@ body.dev-mode .floating-toggle-btn .icon-brush {
     padding: 40px; /* Relleno interno del formulario */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para darle profundidad */
     border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+    align-items: flex-start;
 }
 
 .ContactLabel{
@@ -473,6 +474,45 @@ body.dev-mode .floating-toggle-btn .icon-brush {
 .ContactSubmitBtn:hover {
     background-color: var(--bg-ColorNabvarhover);
     transform: translateY(-2px);
+}
+
+/* --- Footer --- */
+.footer {
+    padding: 40px 10%;
+    background-color: #0a0a0a; /* Un poco más claro que el fondo del body */
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 60px; /* Espacio sobre el footer */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Espacio entre iconos */
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: #cccccc;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Para que la transformación funcione */
+}
+
+.social-links a:hover {
+    color: #ffffff;
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+.social-links svg {
+    width: 32px; /* Tamaño base de los iconos */
+    height: 32px;
+    fill: currentColor; /* El SVG hereda el color del enlace (<a>) */
+}
+
+.footer p {
+    color: #888888;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* --- Responsive Design (Móviles) --- */
@@ -531,11 +571,35 @@ body.dev-mode .floating-toggle-btn .icon-brush {
         margin-top: 40px;
     }
 
+    .footer {
+    padding: 40px 10%;
+    background-color: #0a0a0a; /* Un poco más claro que el fondo del body */
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 60px; /* Espacio sobre el footer */ 
+    }
     /* Contact Section */
     .ContactSection {
         padding: 40px 5%;
     }
     .ContactForm {
         padding: 25px;
+    }
+
+    
+
+    /* Footer */
+    .footer {
+        padding: 30px 5%;
+        margin-top: 40px;
+    }
+
+    .social-links {
+        gap: 20px;
+    }
+
+    .social-links svg {
+        width: 28px; /* Un poco más pequeños en móviles */
+        height: 28px;
     }
 }
