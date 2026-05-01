@@ -168,11 +168,12 @@ body {
     flex-shrink: 0; /* Evita que las imágenes se aplasten */
     overflow-x: hidden;
     -webkit-user-drag: none;
-    
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .project-card img:hover {
-    transform: scale(1.05);
+    transform: scale(0.3);
+    filter: brightness(1);
     -webkit-user-drag: none;
      pointer-events: none; /* Esto evita que el navegador intente "arrastrar" el archivo de imagen */
 }

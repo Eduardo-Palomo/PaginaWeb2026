@@ -187,10 +187,13 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 10;
+    
 }
 
 .project-card:hover .hover-video {
     opacity: 1;
+    
+
 }
 
 .project-card img {
@@ -200,11 +203,12 @@ body {
     border-radius: 15px;
     overflow-x: hidden;
     -webkit-user-drag: none;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .project-card:hover img {
     transform: scale(1.05);
+    filter: brightness(0.6);
 }
 
 .projects-container:active {
