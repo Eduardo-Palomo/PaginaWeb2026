@@ -7,6 +7,9 @@ let scrollLeft;
 slider.addEventListener('mousedown', (e) => {
     isDown = true;
     slider.style.cursor = 'grabbing';
+    // Desactivar el scroll snap para que no pelee con el arrastre manual
+    slider.style.scrollSnapType = 'none';
+    slider.style.scrollBehavior = 'auto';
     // Guardamos la posición exacta donde hiciste click
     startX = e.pageX - slider.offsetLeft;
     // Guardamos la posición actual del scroll
@@ -17,6 +20,8 @@ slider.addEventListener('mousedown', (e) => {
 window.addEventListener('mouseup', () => {
     isDown = false;
     slider.style.cursor = 'grab';
+    slider.style.scrollSnapType = '';
+    slider.style.scrollBehavior = 'smooth';
 });
 
 // 3. Cuando mueves el mouse
@@ -32,12 +37,16 @@ slider.addEventListener('mousemove', (e) => {
 // 4. Seguridad: Si el mouse sale del contenedor, dejamos de arrastrar
 slider.addEventListener('mouseleave', () => {
     isDown = false;
+    slider.style.scrollSnapType = '';
+    slider.style.scrollBehavior = 'smooth';
 });
 
 // 5. Soporte para pantallas táctiles (Celulares y Tablets)
 if (slider) {
     slider.addEventListener('touchstart', (e) => {
         isDown = true;
+        slider.style.scrollSnapType = 'none';
+        slider.style.scrollBehavior = 'auto';
         // En pantallas táctiles, las posiciones vienen dentro del arreglo 'touches'
         startX = e.touches[0].pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
@@ -45,6 +54,8 @@ if (slider) {
 
     window.addEventListener('touchend', () => {
         isDown = false;
+        slider.style.scrollSnapType = '';
+        slider.style.scrollBehavior = 'smooth';
     });
 
     slider.addEventListener('touchmove', (e) => {
@@ -66,5 +77,25 @@ window.addEventListener('scroll', () => {
     } else {
         // Opcional: Quita esto si quieres que una vez que se vaya ya no vuelva
         video.classList.add('video-visible'); 
+    }
+});
+
+// Reproducir video al hacer hover en las tarjetas de proyecto
+const projectCards = document.querySelectorAll('.project-card');
+
+projectCards.forEach(card => {
+    const video = card.querySelector('.hover-video');
+    if (video) {
+        card.addEventListener('mouseenter', () => {
+            video.play().catch(error => {
+                console.log("No se pudo reproducir el video:", error);
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            video.pause();
+            // Opcional: reiniciar el video al inicio cuando se quita el mouse
+            video.currentTime = 0;
+        });
     }
 });

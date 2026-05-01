@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
 
-/*todo: paleta de colores */
+/*paleta de colores */
 :root {
     --bg-color: #020202;
     --design-gradient-color: #6d0f0f80; 
@@ -14,7 +14,7 @@
 
 }
 
-/*todo: Animacion de deslizamiento */
+/*Animacion de deslizamiento */
 html {
     scroll-behavior: smooth;
 }
@@ -38,7 +38,7 @@ body {
     line-height: 1.6;
 }
 
-/*todo: BarradeNavegacion */
+/* BarradeNavegacion */
 .navbar {
     position: fixed;
     top: 0px;
@@ -78,7 +78,7 @@ body {
 
 .navbar a:hover { color: white; }
 
-/*todo: Seccion Hero */
+/* Sección Hero */
 .hero-section {
     position: relative;
     overflow: hidden;
@@ -100,11 +100,11 @@ body {
     min-height: 100%;
     width: auto;
     height: auto;
-    transform: translate(-50%, -50%); /*todo: Centrado */
+    transform: translate(-50%, -50%); /*Centrado */
     object-fit: cover;
-    z-index: 0; /*todo: Capa Trasera */
-    opacity: 0; /*todo: Inicia estando invisible */
-    transition: opacity 2s ease; /*todo: Transición suave */
+    z-index: 0; /* Capa Trasera */
+    opacity: 0; /*tInicia estando invisible */
+    transition: opacity 2s ease; /* Transición suave */
 }
 
 .video-visible {
@@ -112,8 +112,8 @@ body {
 }
 
 .hero-content {
-    position: relative; /*todo: Para que z-index funcione */
-    z-index: 1;      /*todo: para que este sobre el video */
+    position: relative; /* Para que z-index funcione */
+    z-index: 1;      /* para que este sobre el video */
 }
 
 
@@ -140,13 +140,13 @@ body {
 
 .hero-content span { color: white; }
 
-/*todo: Seccion Proyectos */
+/*Seccion Proyectos */
 .projects-section {
     padding: 50px 5%;
     background: linear-gradient(var(--design-gradient-color), #14141480);    
     overflow-x: hidden;
 
-/*todo: Para evitar la selección de texto y arrastrar imágenes */
+/*Para evitar la selección de texto y arrastrar imágenes */
     user-select: none;
     -webkit-user-drag: none;
 }
@@ -154,36 +154,64 @@ body {
 .projects-container {
     display: flex;
     gap: 5px;
-    overflow-x: hidden; /* Ocultamos la barra de scroll */
+    overflow-x: auto; /* Permitir scroll horizontal (Script lo usa y es mejor semánticamente) */
     scroll-behavior: smooth; /* Hace que el movimiento sea fluido */
-    padding: 20px;
+    padding: 60px 20px; /* Aumentamos el padding arriba/abajo para que el video de 120% y el scale no provoquen scroll vertical */
     white-space: nowrap;
     -webkit-user-drag: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.projects-container::-webkit-scrollbar {
+    display: none; /* Ocultamos la barra de scroll en Chrome/Safari */
+}
+
+.project-card {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    width: 300px;
+    height: 450px;
+    border-radius: 15px;
+}
+
+.project-card .hover-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 120%; /* ajustado para que el personaje resalte */
+    width: auto;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.project-card:hover .hover-video {
+    opacity: 1;
 }
 
 .project-card img {
-    width: 300px;
-    height: 450px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 15px;
-    flex-shrink: 0; /* Evita que las imágenes se aplasten */
     overflow-x: hidden;
     -webkit-user-drag: none;
-    
+    transition: transform 0.3s ease;
 }
 
-.project-card img:hover {
+.project-card:hover img {
     transform: scale(1.05);
-    -webkit-user-drag: none;
-     pointer-events: none; /* Esto evita que el navegador intente "arrastrar" el archivo de imagen */
 }
-
 
 .projects-container:active {
     cursor: grabbing; /* Cambia a manita cerrada al hacer clic */
 }
 
-/*todo: seccion About */
+/*seccion About */
 .about-section {
     padding: 100px 10%;
     display: flex;
@@ -239,7 +267,7 @@ body {
     transition: filter 0.5s ease;
 }
 
-/*todo: Boton flotante */
+/*Boton flotante */
 .floating-toggle-btn {
     position: fixed;
     bottom: 30px;
