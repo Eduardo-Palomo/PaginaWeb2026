@@ -277,6 +277,7 @@ body {
 /*Boton flotante */
 .floating-toggle-btn {
     position: fixed;
+    left: 50px;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
