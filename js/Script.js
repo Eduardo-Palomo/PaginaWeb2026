@@ -82,12 +82,22 @@ window.addEventListener('scroll', () => {
 
 // Reproducir video al hacer hover en las tarjetas de proyecto
 const projectCards = document.querySelectorAll('.project-card');
+let currentlyPlaying = null; // Guarda el video que se está reproduciendo actualmente
 
 projectCards.forEach(card => {
     const video = card.querySelector('.hover-video');
     if (video) {
         card.addEventListener('mouseenter', () => {
-            video.play().catch(error => {
+            // Si hay otro video reproduciéndose, lo pausamos y reiniciamos
+            if (currentlyPlaying && currentlyPlaying !== video) {
+                currentlyPlaying.pause();
+                currentlyPlaying.currentTime = 0;
+            }
+
+            // Intentamos reproducir el video actual
+            video.play().then(() => {
+                currentlyPlaying = video;
+            }).catch(error => {
                 console.log("No se pudo reproducir el video:", error);
             });
         });
@@ -96,6 +106,10 @@ projectCards.forEach(card => {
             video.pause();
             // Opcional: reiniciar el video al inicio cuando se quita el mouse
             video.currentTime = 0;
+            
+            if (currentlyPlaying === video) {
+                currentlyPlaying = null;
+            }
         });
     }
 });
